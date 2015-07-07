@@ -1,0 +1,19 @@
+<section class="col-md-12 panel panel-default">
+    <div class="col-md-4 col-md-offset-4 panel-body">
+        <form>
+            <div class="form-group">
+                <label for="inputUserName">Email</label>
+                <input type="text" class="form-control" id="inputUserName" placeholder="User Name" ng-model="login.username">
+            </div>
+            <div class="form-group">
+                <label for="inputPassword">Password</label>
+                <input type="password" class="form-control" id="inputPassword" placeholder="Password" ng-model="login.password">
+            </div>
+            <button type="submit" class="btn btn-primary" ng-click="fnLogin(login)">Login</button>
+            <img ng-if="isProcessing" src="img/loading.gif"/><span class="text-danger">{{errMsg}}</span>
+        </form>
+    </div>
+</section>
+
+
+

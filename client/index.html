@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Banner</title>
+<link rel="stylesheet" href="css/vendor/bootstrap/bootstrap.min.css">
+<link rel="stylesheet" href="css/vendor/bootstrap/bootstrap-theme.min.css">
+<link rel="stylesheet" href="css/vendor/bootstrap/font-awesome.css">
+<link rel="stylesheet" href="css/custom/style.css">
+<script type="text/javascript" src="js/vendor/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="js/vendor/bootstrap/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/vendor/angular/angular.min.js"></script>
+<script type="text/javascript" src="js/vendor/angular/angular-ui-router.min.js"></script>
+<script type="text/javascript" src="js/vendor/angular/angular-file-upload.js"></script>
+</head> 
+<body ng-app="bannerApp">
+    <div class="container" ng-include="'views/nav.bar.html'" ng-controller="NavBarCtrl"></div>
+    <div class="container" ui-view="container"></div>
+</body>
+<script type="text/javascript" src="app.js"></script>
+<script type="text/javascript" src="js/custom/directives/directives.js"></script>
+<script type="text/javascript" src="js/custom/services/banner.service.js"></script>
+<script type="text/javascript" src="js/custom/services/login.service.js"></script>
+<script type="text/javascript" src="js/custom/services/auth.service.js"></script>
+<script type="text/javascript" src="js/custom/controllers/nav.bar.ctrl.js"></script>
+<script type="text/javascript" src="js/custom/controllers/login.ctrl.js"></script>
+<script type="text/javascript" src="js/custom/controllers/main.ctrl.js"></script>
+<script type="text/javascript" src="js/custom/controllers/edit.banner.ctrl.js"></script>
+</html> 

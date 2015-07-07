@@ -1,0 +1,35 @@
+{
+  "name": "banner",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "properties": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "image": {
+      "type": "string",
+      "required": true
+    },
+    "clickTitle": {
+      "type": "string",
+      "required": true
+    },
+    "clickLink": {
+      "type": "string",
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [
+      {
+          "accessType": "*",
+          "principalType": "ROLE",
+          "principalId": "$everyone",
+          "permission": "ALLOW",
+          "property": "*"
+      }
+  ],
+  "methods": []
+}

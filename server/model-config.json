@@ -1,0 +1,36 @@
+{
+    "_meta": {
+        "sources": [
+            "../common/models",
+            "./models"
+        ]
+    },
+    "User": {
+        "dataSource": "MySql",
+        "public": true
+    },
+    "AccessToken": {
+        "dataSource": "MySql",
+        "public": false
+    },
+    "ACL": {
+        "dataSource": "MySql",
+        "public": false
+    },
+    "RoleMapping": {
+        "dataSource": "MySql",
+        "public": false
+    },
+    "Role": {
+        "dataSource": "MySql",
+        "public": true
+    },
+    "container": {
+        "dataSource": "storage",
+        "public": true
+    },
+    "banner": {
+        "dataSource": "MySql",
+        "public": true
+    }
+}

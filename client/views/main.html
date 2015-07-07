@@ -1,0 +1,26 @@
+<!-- Base MasterSlider style sheet-->
+<link rel="stylesheet" href="css/vendor/masterslider/masterslider.css"/>
+<!-- MasterSlider skin-->
+<link rel="stylesheet" href="css/vendor/masterslider/masterstyle.css"/>
+<!-- MasterSlider Template Style-->
+<link rel="stylesheet" href="css/vendor/masterslider/ms-fullscreen.css"/>
+
+<script src="js/vendor/masterslider/masterslider.min.js"></script>
+<div ng-init="fnInitBanner()">
+    <!-- master slider-->
+    <div id="masterSlider" class="master-slider ms-skin-default">
+        <!-- new slide-->
+        <div id="ms-slide" ng-repeat="bannerItem in bannerArr" load-master-slider-directive="" data-delay="5" class="ms-slide slide">
+            <div class="slide-pattern"></div>
+            <div style="left: 124px; max-width: 1024px; display: block; opacity: 1;" class="ms-slide-layers">
+                <!-- For Text Label on layer-->
+                <div data-effect="skewright(25,250)" class="ms-layer thin-text-white whitetext div-height"></div>
+                <h3 data-effect="skewright(25,250)" class="ms-layer thin-text-white blacktext div-height">{{bannerItem.title}}</h3>
+                <!-- For button on layer-->
+                <h3 data-effect="rotate3dleft(50,0,0,480)" class="ms-layer thin-text-white whitetext div-height">{{bannerItem.clickTitle}}</h3>
+            </div>
+            <!-- end of slide-->
+        </div>
+    </div>
+    <!-- end of master slider-->
+</div>
