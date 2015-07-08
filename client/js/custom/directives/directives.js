@@ -6,7 +6,7 @@ app.directive('loadMasterSliderDirective', function(API_URL) {
             element.append('<img src="'+API_URL+'containers/container2/download/'+scope.bannerItem.image+'" alt="'+scope.bannerItem.image+'"/>');
         }else{
             var html = '';
-            html += '<video data-autopause="false" data-mute="true" data-loop="true" data-fill-mode="fill">';
+            html += '<video data-autopause="false" data-loop="true" data-fill-mode="fill">';
             html += '   <source id="mp4" src="'+API_URL+'containers/container2/download/'+scope.bannerItem.image+'" type="video/mp4"/>';
             html +='</video>';
             element.append(html);

@@ -1,0 +1,33 @@
+<div class="modal-header">
+    <button type="button" class="close" aria-hidden="true" ng-click="fnCancel()">&times;</button>
+    <h3 class="modal-title">Banner</h3>
+</div>
+<div class="modal-body">
+    <form id="bannerForm" name="bannerForm" novalidate>
+        <div class="form-group">
+            <label for="inputName">Name</label>
+            <input type="text" class="form-control" id="inputName" placeholder="Name"  ng-model="banner.clickTitle" required="required">
+        </div>
+        <div class="form-group">
+            <label for="inputDescription">Description</label>
+            <input type="text" class="form-control" id="inputDescription" placeholder="Description"  ng-model="banner.title" required="required">
+        </div>
+        <div class="form-group">
+            <label for="inputLink">Link</label>
+            <input type="text" class="form-control" id="inputLink" ng-model="banner.clickLink" placeholder="Enter URL not forget http: // link for more info - ticket assistance" required="required">
+        </div>
+        <div class="form-group">
+            <label for="inputFileUpload">Image / Video</label>
+            <input class="btn btn-primary" id="inputFileUpload" nv-file-select="" type="file" uploader="uploader"
+                   onchange="angular.element(this).scope().setFiles(this)" required="required"/>
+        </div>
+        <div class="form-group">
+            <label>Image / Video Preview</label>
+            <view-by-file-extension id="preview" file-name="banner.image"></view-by-file-extension>
+        </div>
+    </form>
+</div>
+<div class="modal-footer">
+    <button ng-click="fnSave(banner)" ng-disabled="bannerForm.$invalid || isBtnDisabled" class="btn btn-primary">Save</button>
+    <button class="btn btn-warning" ng-click="fnCancel()">Cancel</button>
+</div>

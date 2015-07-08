@@ -6,7 +6,7 @@
  *
  * Main module of the application.
  */
-var app = angular.module('bannerApp', ['ui.router','angularFileUpload']);
+var app = angular.module('bannerApp', ['ui.router','angularFileUpload','ui.bootstrap']);
 
 app.config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
     $urlRouterProvider.otherwise('/');

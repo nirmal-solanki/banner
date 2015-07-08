@@ -1,62 +1,6 @@
 <section ng-init="fnInitEditBanner()" class="col-md-12 panel panel-default">
-    <div class="col-md-4 col-md-offset-4 panel-body">
-        <form id="bannerForm" name="bannerForm" novalidate>
-            <div class="form-group">
-                <label for="inputName">Name</label>
-                <input type="text" class="form-control" id="inputName" placeholder="Name"  ng-model="banner.clickTitle" required="required">
-            </div>
-            <div class="form-group">
-                <label for="inputDescription">Description</label>
-                <input type="text" class="form-control" id="inputDescription" placeholder="Description"  ng-model="banner.title" required="required">
-            </div>
-            <div class="form-group">
-                <label for="inputLink">Link</label>
-                <input type="text" class="form-control" id="inputLink" ng-model="banner.clickLink" placeholder="Enter URL not forget http: // link for more info - ticket assistance" required="required">
-            </div>
-            <div class="form-group">
-                <label for="inputFileUpload">Image / Video</label>
-                <input class="btn btn-primary" id="inputFileUpload" nv-file-select="" type="file" uploader="uploader"
-                       onchange="angular.element(this).scope().setFiles(this)" required="required"/>
-            </div>
-            <div class="form-group">
-                <label>Image / Video Preview</label>
-                <view-by-file-extension id="preview" file-name="banner.image"></view-by-file-extension>
-            </div>
-            <div class="form-group">
-                <table class="table">
-                    <thead>
-                    <tr>
-                        <th width="50%">Image / Video</th>
-                        <th ng-show="uploader.isHTML5">Taille</th>
-                        <th ng-show="uploader.isHTML5">Progrès</th>
-                        <th>Status</th>
-                        <th>Actions</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr ng-repeat="item in uploader.queue">
-                        <td><strong>{{ item.file.name }}</strong></td>
-                        <td ng-show="uploader.isHTML5" nowrap="">{{item.file.size/1024/1024|number:2 }} MB</td>
-                        <td ng-show="uploader.isHTML5">
-                            <div style="margin-bottom: 0;" class="progress">
-                                <div role="progressbar" ng-style="{ &quot;width&quot;: item.progress + &quot;%&quot; }" class="progress-bar"></div>
-                            </div>
-                        </td>
-                        <td class="text-center"><span ng-show="item.isSuccess"><i class="glyphicon glyphicon-ok"></i></span><span ng-show="item.isCancel"><i class="glyphicon glyphicon-ban-circle"></i></span><span ng-show="item.isError"><i class="glyphicon glyphicon-remove"></i></span></td>
-                        <td nowrap="">
-                            <button type="button" ng-click="item.upload()" ng-disabled="item.isReady || item.isUploading || item.isSuccess" class="btn btn-success btn-xs"><span class="glyphicon glyphicon-upload"></span>Upload</button>
-                            <button type="button" ng-click="item.cancel()" ng-disabled="!item.isUploading" class="btn btn-warning btn-xs"><span class="glyphicon glyphicon-ban-circle"></span>Cancel</button>
-                            <button type="button" ng-click="item.remove()" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-trash"></span>Remove</button>
-                        </td>
-                    </tr>
-                    </tbody>
-                </table>
-            </div>
-            <button ng-click="fnSaveBanner(banner,item)" ng-disabled="bannerForm.$invalid || isProcessing" class="btn btn-default btn-lg">Save</button>
-            <img ng-if="isProcessing" src="img/loading.gif"/>
-        </form>
-    </div>
     <div class="col-md-12 panel-body">
+        <button class="btn btn-primary pull-right" type="button" ng-click="fnOpenAddBlogModel('lg')">Add Banner</button>
         <table class="table">
             <thead>
                 <tr>
@@ -72,10 +16,10 @@
                 <td>{{$index+1}}</td>
                 <td>{{bannerItem.clickTitle}}</td>
                 <td>{{bannerItem.title}}</td>
-                <td><a class="btn btn-primary" href="javascript:void(0);" ng-click="fnEditBanner(bannerItem)">
-                    <i class="fa fa-pencil-square-o fa-lg"></i>Edit</a>
-                    <a class="btn btn-danger" href="javascript:void(0);" ng-click="fnDeleteBanner(bannerItem.id,bannerItem.image)">
-                    <i class="fa fa-trash-o fa-lg"></i> Delete</a>
+                <td><a href="javascript:void(0);" ng-click="fnEditBanner(bannerItem)">
+                    <i class="fa fa-pencil-square-o fa-lg"></i></a>
+                    <a href="javascript:void(0);" ng-click="fnDeleteBanner(bannerItem.id,bannerItem.image)">
+                    <i class="fa fa-trash-o fa-lg"></i></a>
                 </td>
             </tr>
             </tbody>
