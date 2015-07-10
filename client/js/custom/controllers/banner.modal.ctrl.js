@@ -1,9 +1,10 @@
+'use strict';
 app.controller("BannerModalCtrl",['$rootScope', '$scope', '$modalInstance','FileUploader','API_URL','Banner',
     function($rootScope, $scope, $modalInstance,FileUploader,API_URL,Banner){
 
         $scope.banner = Banner ? Banner : {};
         $scope.isBtnDisabled = Banner ? false : true;
-        $scope.isFileUpload = false;
+        var isFileUpload = false;
 
         $scope.getNewFileName = function(fileItem){
             var fileExtension = '.' + fileItem.file.name.split('.').pop();
@@ -32,8 +33,7 @@ app.controller("BannerModalCtrl",['$rootScope', '$scope', '$modalInstance','File
             $scope.getFileItem = fileItem;
             $scope.imageName = fileItem.file.name;
             $scope.isBtnDisabled = false;
-            $scope.isFileUpload = true;
-            /*console.info('onAfterAddingFile', fileItem);*/
+            console.info('onAfterAddingFile', fileItem);
         };
         uploader.onAfterAddingAll = function(addedFileItems) {
             /*console.info('onAfterAddingAll', addedFileItems);*/
@@ -79,6 +79,7 @@ app.controller("BannerModalCtrl",['$rootScope', '$scope', '$modalInstance','File
                             $("#preview").html(html);
                         }
                     }
+                    isFileUpload = true;
                 };
                 reader.readAsDataURL(element.files[0]);
             }
@@ -89,7 +90,7 @@ app.controller("BannerModalCtrl",['$rootScope', '$scope', '$modalInstance','File
             var obj = {};
             obj.banner = banner;
             obj.getFileFileItem = $scope.getFileItem;
-            obj.isFileUpload = $scope.isFileUpload;
+            obj.isFileUpload = isFileUpload;
             $modalInstance.close(obj);
         };
 

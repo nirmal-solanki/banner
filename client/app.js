@@ -6,7 +6,7 @@
  *
  * Main module of the application.
  */
-var app = angular.module('bannerApp', ['ui.router','angularFileUpload','ui.bootstrap']);
+var app = angular.module('bannerApp', ['ui.router','ngResource','angularFileUpload','ui.bootstrap']);
 
 app.config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
     $urlRouterProvider.otherwise('/');
@@ -38,7 +38,8 @@ app.config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
                     return AuthService.isAuthenticate();
                 }
             }
-        })
+        });
+    $locationProvider.html5Mode(false);
 });
 
 app.run(function ($rootScope, $location, $state) {

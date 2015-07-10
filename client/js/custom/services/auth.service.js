@@ -1,3 +1,4 @@
+'use strict';
 app.factory('AuthService',['$q','$rootScope','$location',
     function($q,$rootScope,$location) {
         var AuthService = {};

@@ -1,3 +1,4 @@
+'use strict';
 app.factory('LoginService',['$q','$http','API_URL',
     function($q,$http,API_URL) {
         var LoginService = {};

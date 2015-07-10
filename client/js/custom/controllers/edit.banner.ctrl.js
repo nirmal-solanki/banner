@@ -1,6 +1,6 @@
 'use strict';
 app.controller('EditBannerCtrl',
-    function ($scope, BannerService ,$http, $modal, API_URL) {
+    function ($scope, BannerFactory, $http, $modal, API_URL) {
 
         $scope.bannerArr = [];
         $scope.banner = {};
@@ -14,9 +14,8 @@ app.controller('EditBannerCtrl',
 
         $scope.fnFetchBanners = function(){
             $scope.isBannerDataLoaded = true;
-            BannerService.FetchBanners().then(function(res){
+            $scope.bannerArr = BannerFactory.query(function(res){
                 $scope.isBannerDataLoaded = false;
-                $scope.bannerArr = res;
             });
         };
 
@@ -24,19 +23,18 @@ app.controller('EditBannerCtrl',
             var bannerCopy = angular.copy(obj.banner);
             if(obj.isFileUpload){
                 obj.getFileFileItem.upload();
-                obj.isFileUpload = false;
             }
             if(bannerCopy.id){
-                BannerService.UpdateBanner(localStorage.getItem("access_token"),bannerCopy.id,bannerCopy).then(function(res){
-                    if($scope.oldImage && $scope.isImageUpload){
+                BannerFactory.update({ id: bannerCopy.id,access_token:localStorage.getItem("access_token")},bannerCopy,function(res){
+                    if($scope.oldImage && obj.isFileUpload){
                         $scope.fnDeleteContainerFile($scope.oldImage);
                         $scope.oldImage = "";
                     }
                     $scope.fnFetchBanners();
                 });
             }else{
-                BannerService.CreateBanner(localStorage.getItem("access_token"),bannerCopy).then(function(res){
-                    $scope.bannerArr.push(res);
+                BannerFactory.create({access_token:localStorage.getItem("access_token")},bannerCopy,function(res){
+                    $scope.fnFetchBanners();
                 });
             }
         };
@@ -46,13 +44,11 @@ app.controller('EditBannerCtrl',
             $scope.fnOpenAddBlogModel('lg',angular.copy(banner));
         };
 
-        $scope.fnDeleteBanner = function(id,image){
+        $scope.fnDeleteBanner = function(_id,image){
             if (confirm('Do you want to delete this banner?')) {
-                BannerService.DeleteBanner(localStorage.getItem("access_token"), id).then(function (res) {
-                    if (res == ""){
+                BannerFactory.delete({ id: _id,access_token:localStorage.getItem("access_token")},function(res){
                         $scope.fnFetchBanners();
                         $scope.fnDeleteContainerFile(image);
-                    }
                 });
             }
         };
